@@ -1,0 +1,25 @@
+import { createGlobalStyle } from "styled-components";
+
+export const GlobalStyles = createGlobalStyle`
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+html, body, #root {
+  min-height: 100vh;
+  font-family: "Mulish", sans-serif;
+}
+
+
+
+`;
