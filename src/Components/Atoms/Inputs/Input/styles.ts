@@ -5,6 +5,13 @@ import { darken } from "polished";
 export const Container = styled.div`
   position: relative;
 
+  &[data-error="true"] {
+    img {
+      filter: brightness(0) saturate(100%) invert(16%) sepia(71%)
+        saturate(7434%) hue-rotate(10deg) brightness(98%) contrast(128%);
+    }
+  }
+
   > img {
     cursor: pointer;
     position: absolute;

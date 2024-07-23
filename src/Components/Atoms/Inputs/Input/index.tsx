@@ -11,7 +11,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputCustomProps>(
     }
 
     return (
-      <S.Container>
+      <S.Container {...props}>
         {props.type === "password" ? (
           eyeOpen ? (
             <img
