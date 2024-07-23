@@ -11,16 +11,6 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
       }
     }
 
-    &:not([data-error="true"]):has(input:focus) {
-      .react-datepicker__input-container input {
-        border-color: ${(props) => props.theme.colors["blue-100"]};
-      }
-
-      label {
-        color: ${(props) => props.theme.colors["blue-100"]};
-      }
-    }
-
     &[data-error="true"] {
       .react-datepicker__input-container input {
         border: 1px solid red;
@@ -77,7 +67,7 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
     .react-datepicker__close-icon {
       &::after {
         background-color: transparent;
-        color: ${(props) => props.theme.colors["gray-300"]};
+
         font-size: 16px;
         position: absolute;
         /* font-weight: 600; */
@@ -94,18 +84,16 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
 
         height: 36px;
         border-radius: 12px;
-        border: 1px solid ${(props) => props.theme.colors["gray-200"]};
+        border: 1px solid ${(props) => props.theme.colors["gray-100"]};
         background: #fff;
 
         padding: 0 16px;
-        color: ${(props) => props.theme.colors["blue-300"]};
         font-size: 12px;
         font-weight: 400;
         outline: none;
         /* letter-spacing: 1px; */
 
         /* &:focus {
-          border: 1px solid ${(props) => props.theme.colors["blue-100"]};
           outline: none;
         } */
 

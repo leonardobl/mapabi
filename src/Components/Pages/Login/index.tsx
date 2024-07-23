@@ -1,3 +1,5 @@
+import { LoginTemplate } from "../../Template/LoginTemplate";
+
 export const Login = () => {
-  return <div>Login</div>;
+  return <LoginTemplate />;
 };

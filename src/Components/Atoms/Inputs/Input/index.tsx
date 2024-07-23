@@ -15,13 +15,13 @@ export const Input = React.forwardRef<HTMLInputElement, InputCustomProps>(
         {props.type === "password" ? (
           eyeOpen ? (
             <img
-              src="/assets/svg/icon-eye-open.svg"
+              src="/assets/svg/icon-eye-open-black.svg"
               alt="icone olho"
               onClick={handleTypeChange}
             />
           ) : (
             <img
-              src="/assets/svg/icon-eye-close.svg"
+              src="/assets/svg/icon-eye-close-black.svg"
               alt="icone olho"
               onClick={handleTypeChange}
             />

@@ -8,6 +8,8 @@ export const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  color: ${(props) => props.theme.colors.black}
 }
 
 button {
@@ -16,7 +18,7 @@ button {
 
 
 html, body, #root {
-  min-height: 100vh;
+  min-height: 100dvh;
   font-family: "Mulish", sans-serif;
 }
 
