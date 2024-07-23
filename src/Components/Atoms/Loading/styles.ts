@@ -19,8 +19,8 @@ export const ImgLoad = styled.img`
   display: block;
   margin-bottom: 16px;
 
-  /* filter: brightness(0) saturate(100%) invert(52%) sepia(44%) saturate(6981%)
-    hue-rotate(192deg) brightness(94%) contrast(87%); */
+  filter: brightness(0) saturate(100%) invert(66%) sepia(49%) saturate(550%)
+    hue-rotate(75deg) brightness(96%) contrast(90%);
 `;
 
 export const WrapperImg = styled.div`

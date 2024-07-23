@@ -36,6 +36,7 @@ export const useLogin = () => {
           usuarioCpfCnpj: decoded.sub,
           roles: decoded.perfis,
           type: decoded.type,
+          nome: decoded.nome,
         });
 
         return decoded;
