@@ -36,7 +36,7 @@ export const Container = styled.div`
 `;
 
 export const MyInput = styled.input`
-  height: 36px;
+  height: 42px;
   border-radius: 10px;
   outline: none;
   /* letter-spacing: 1px; */

@@ -19,6 +19,7 @@ button {
 
 html, body, #root {
   min-height: 100dvh;
+  width: 100%;
   font-family: "Mulish", sans-serif;
 }
 
