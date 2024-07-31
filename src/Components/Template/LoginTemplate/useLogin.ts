@@ -48,9 +48,6 @@ export const useLogin = () => {
         } else {
           localStorage.clear();
           toast.error("Acesso não permitido!");
-          setTimeout(() => {
-            navigate("/login");
-          }, 2000);
         }
 
         
