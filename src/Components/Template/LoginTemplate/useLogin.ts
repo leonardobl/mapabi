@@ -5,7 +5,6 @@ import { useContextSite } from "../../../Context/Context";
 import { useLocalStorage } from "../../../Hooks/SessionStorage/useSessionStorage";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { Cliente } from "../../../Services/Cliente";
 import { removeDigitos } from "../../../Util/masks";
 import { Autenticacao } from "../../../Services/Autenticacao";
 import { RolesEnum } from "../../../Enum/roles";
