@@ -39,9 +39,9 @@ export const useLogin = () => {
           nome: decoded.nome,
         });
 
-        if (decoded?.perfis?.includes([RolesEnum.ROLE_ADMIN, RolesEnum.ROLE_GERENTE])) {
+        if ([RolesEnum.ROLE_ADMIN, RolesEnum.ROLE_GERENTE].some((role) => decoded?.perfis?.includes(role))) {
           toast.success("Login efetuado com sucesso");
-            localStorage.clear();
+            
           setTimeout(() => {
             navigate("/");
           }, 2000);
@@ -49,8 +49,6 @@ export const useLogin = () => {
           localStorage.clear();
           toast.error("Acesso não permitido!");
         }
-
-        
       })
       .catch(
         ({
