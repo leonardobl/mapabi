@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Cliente } from "../../../Services/Cliente";
 import { removeDigitos } from "../../../Util/masks";
 import { Autenticacao } from "../../../Services/Autenticacao";
+import { RolesEnum } from "../../../Enum/roles";
 
 export const useLogin = () => {
   const { setIsLoad } = useContextSite();
@@ -39,33 +40,21 @@ export const useLogin = () => {
           nome: decoded.nome,
         });
 
-        return decoded;
-      })
-      .then((decoded) => {
-        Cliente.clienteLogado({ uuidUsuario: decoded.uuid })
-          .then(({ data }) => {
-            const dataUser = JSON.parse(
-              localStorage.getItem("dataUser") as string
-            );
+        if (decoded?.perfis?.includes([RolesEnum.ROLE_ADMIN, RolesEnum.ROLE_GERENTE])) {
+          toast.success("Login efetuado com sucesso");
+            localStorage.clear();
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        } else {
+          localStorage.clear();
+          toast.error("Acesso não permitido!");
+          setTimeout(() => {
+            navigate("/login");
+          }, 2000);
+        }
 
-            setDataUser({
-              ...dataUser,
-              cliente: data,
-            });
-          })
-          .catch(
-            ({
-              response: {
-                data: { mensagem },
-              },
-            }) => console.log(mensagem)
-          );
-
-        toast.success("Login efetuado com sucesso");
-
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        
       })
       .catch(
         ({
