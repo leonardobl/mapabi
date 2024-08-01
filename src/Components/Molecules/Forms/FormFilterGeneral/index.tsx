@@ -1,32 +1,21 @@
 import { InputDate } from "../../../Atoms/Inputs/InputDate";
 import * as S from "./styles";
 import { Button } from "../../../Atoms/Button";
-import {
-  IDatesFilterProps,
-  useFormFilterGeneral,
-} from "./useFormFilterGeneral";
+import { useFormFilterGeneral } from "./useFormFilterGeneral";
 import { ComponentProps } from "react";
 import { ErrorMessage } from "../../../Atoms/ErrorMessage";
+import { IGetGerenciamentoProps } from "../../../../Types/gerenciamento";
 
 interface IFormFilterGeneralProps extends ComponentProps<"form"> {
-  submitForm: (e: IDatesFilterProps) => void;
+  submitForm: (e: IGetGerenciamentoProps) => void;
 }
 
 export const FormFilterGeneral = ({
   submitForm,
   ...rest
 }: IFormFilterGeneralProps) => {
-  const {
-    Controller,
-    control,
-    errors,
-    handleSubmit,
-    dayjs,
-    dataFim,
-    setDataFim,
-    dataInicio,
-    setDataInicio,
-  } = useFormFilterGeneral();
+  const { Controller, control, errors, handleSubmit, dayjs } =
+    useFormFilterGeneral();
 
   return (
     <S.FormFilterGeneral {...rest} onSubmit={handleSubmit(submitForm)}>
@@ -34,16 +23,15 @@ export const FormFilterGeneral = ({
         <Controller
           control={control}
           name="dataInicio"
-          render={({ field: { onChange } }) => (
+          render={({ field: { onChange, value } }) => (
             <InputDate
               label="Data Inicial"
               placeholderText="___/___/___"
               showIcon
               data-error={!!errors?.dataInicio}
-              selected={dataInicio}
+              selected={value ? dayjs(value).toDate() : null}
               onChange={(e) => {
-                onChange(dayjs(e).format("YYYY-MM-DD"));
-                e ? setDataInicio(e) : setDataInicio(null);
+                e ? onChange(dayjs(e).format("YYYY-MM-DD")) : onChange("");
               }}
             />
           )}
@@ -54,16 +42,15 @@ export const FormFilterGeneral = ({
         <Controller
           control={control}
           name="dataFim"
-          render={({ field: { onChange } }) => (
+          render={({ field: { onChange, value } }) => (
             <InputDate
               label="Data Final"
               placeholderText="___/___/___"
               showIcon
               data-error={!!errors?.dataFim}
-              selected={dataFim}
+              selected={value ? dayjs(value).toDate() : null}
               onChange={(e) => {
-                onChange(dayjs(e).format("YYYY-MM-DD"));
-                e ? setDataFim(e) : setDataFim(null);
+                e ? onChange(dayjs(e).format("YYYY-MM-DD")) : onChange("");
               }}
             />
           )}

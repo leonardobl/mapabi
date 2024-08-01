@@ -2,12 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import dayjs from "dayjs";
-import { useState } from "react";
-
-export interface IDatesFilterProps {
-  dataInicio: string;
-  dataFim: string;
-}
+import { IGetGerenciamentoProps } from "../../../../Types/gerenciamento";
 
 const schema = z
   .object({
@@ -30,17 +25,14 @@ const schema = z
   );
 
 export const useFormFilterGeneral = () => {
-  const [dataInicio, setDataInicio] = useState<Date | null>(null);
-  const [dataFim, setDataFim] = useState<Date | null>(null);
-
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm<IDatesFilterProps>({
+  } = useForm<IGetGerenciamentoProps>({
     defaultValues: {
-      dataInicio: "",
-      dataFim: "",
+      dataInicio: dayjs(new Date()).format("YYYY-MM-DD"),
+      dataFim: dayjs(new Date()).format("YYYY-MM-DD"),
     },
     mode: "all",
     resolver: zodResolver(schema),
@@ -52,9 +44,5 @@ export const useFormFilterGeneral = () => {
     handleSubmit,
     Controller,
     dayjs,
-    dataInicio,
-    setDataInicio,
-    dataFim,
-    setDataFim,
   };
 };
