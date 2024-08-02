@@ -24,7 +24,7 @@ export class Gerenciamento {
 
   static async tendencia(
     props?: ITendenciaGetProps
-  ): Promise<AxiosResponse<ITendenciaDTO>> {
+  ): Promise<AxiosResponse<ITendenciaDTO[]>> {
     if (props) {
       const values = removeEmpty(props);
       const params = new URLSearchParams({ empresa, ...values }).toString();

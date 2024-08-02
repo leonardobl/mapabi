@@ -5,7 +5,7 @@ import { Card } from "../../Atoms/Card";
 import { useTrendReport } from "./useTrendReport";
 
 export const TrendReportTemplate = () => {
-  const { dadosQuantidades, axisLinear } = useTrendReport();
+  const { qtdChart, valorChart, data } = useTrendReport();
 
   return (
     <Layout headerTitle="Tendência">
@@ -21,8 +21,8 @@ export const TrendReportTemplate = () => {
                 }}
                 height={230}
                 width={530}
-                xAxis={[{ scaleType: "band", data: axisLinear || [] }]}
-                series={dadosQuantidades || []}
+                xAxis={[{ scaleType: "band", data: qtdChart?.xAxis || [] }]}
+                series={qtdChart.series || []}
                 slotProps={{
                   legend: {
                     hidden: true,
@@ -42,8 +42,13 @@ export const TrendReportTemplate = () => {
                 }}
                 height={230}
                 width={530}
-                xAxis={[{ scaleType: "band", data: axisLinear || [] }]}
-                series={dadosQuantidades || []}
+                xAxis={[
+                  {
+                    scaleType: "band",
+                    data: valorChart?.xAxis || [],
+                  },
+                ]}
+                series={valorChart?.series || []}
                 slotProps={{
                   legend: {
                     hidden: true,
@@ -69,19 +74,11 @@ export const TrendReportTemplate = () => {
 
               <S.TableBody>
                 <tr>
-                  <td>0000</td>
-                  <td>0000</td>
-                  <td>0000</td>
-                  <td>0000</td>
-                  <td>0000</td>
-                </tr>
-
-                <tr>
-                  <td>0000</td>
-                  <td>0000</td>
-                  <td>0000</td>
-                  <td>0000</td>
-                  <td>0000</td>
+                  <td>{data?.meta}</td>
+                  <td>{data?.qtdTotal}</td>
+                  <td>{data?.valorMedio}</td>
+                  <td>{data?.qtdMediaNecessaria}</td>
+                  <td>{data?.valorMedioProjecao}</td>
                 </tr>
               </S.TableBody>
             </S.Table>

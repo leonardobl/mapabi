@@ -18,7 +18,7 @@ export interface ITendenciaDTO {
 }
 
 export interface ITendenciaDiaDTO {
-  data: Date;
+  data: string;
   qtdTotal: number;
   valorTotal: number;
 }

@@ -1,81 +1,76 @@
-import { useEffect, useState } from "react";
+import dayjs from "dayjs";
+import { useCallback, useEffect, useState } from "react";
 import { Gerenciamento } from "../../../Services/Gerenciamento";
-import { GraphColors } from "../../../Util/graphCorlors";
 import { toast } from "react-toastify";
 import { useContextSite } from "../../../Context/Context";
+import { ILineChartprops } from "../../../Types/lineChart";
+import { GraphColors } from "../../../Util/graphCorlors";
 import { ITendenciaDTO } from "../../../Types/relatorioTendencia";
-import dayjs from "dayjs";
 
 export const useTrendReport = () => {
   const { setIsLoad } = useContextSite();
-  const [dadosQuantidades, setDadosQuantidades] = useState<
-    { label: string; data: number[]; color: string }[]
-  >([]);
-  const [dadosValores, setDadosValores] = useState<
-    { label: string; data: number[]; color: string }[]
-  >([]);
-  const [axisLinear, setAxisLinear] = useState<string[]>([]);
-  const [desempenhos, setDesempenhos] = useState<ITendenciaDTO[]>([]);
+  const [qtdChart, setQtdChart] = useState<ILineChartprops>(
+    {} as ILineChartprops
+  );
 
-  useEffect(() => {
+  const [valorChart, setValorChart] = useState<ILineChartprops>(
+    {} as ILineChartprops
+  );
+
+  const [data, setData] = useState({} as ITendenciaDTO);
+
+  const getTendencias = useCallback(() => {
     setIsLoad(true);
-
     Gerenciamento.tendencia()
       .then(({ data }) => {
-        const dates: string[] = [];
-        const seriesQuantidades = {
-          label: data.empresa,
-          data: data.tendencias.map((producao) => producao.qtdTotal),
-          color: GraphColors[data.empresa],
+        setData(data[0]);
+
+        const dataQuantidade: ILineChartprops = {
+          xAxis: data[0].tendencias.map((i) =>
+            dayjs(i.data).format("DD/MM/YYYY")
+          ),
+          series: [
+            {
+              data: data[0].tendencias.map((i) => i.qtdTotal),
+              label: data[0].empresa,
+              color: GraphColors[data[0].empresa],
+            },
+          ],
         };
 
-        data.tendencias.forEach((producao) => {
-          if (!dates.includes(producao.data + "")) {
-            dates.push(producao.data + "");
-          }
-        });
-
-        const seriesValores = {
-          label: data.empresa,
-          data: data.tendencias.map((producao) => producao.valorTotal / 100),
-          color: GraphColors[data.empresa],
+        const dataTotal: ILineChartprops = {
+          xAxis: data[0].tendencias.map((i) =>
+            dayjs(i.data).format("DD/MM/YYYY")
+          ),
+          series: [
+            {
+              data: data[0].tendencias.map((i) => i.valorTotal),
+              label: data[0].empresa,
+              color: GraphColors[data[0].empresa],
+            },
+          ],
         };
 
-        const seriesDesempenhoEmpresas = {
-          ...data,
-          empresa: data?.empresa,
-          meta: data?.meta ? data?.meta : 0,
-          qtdTotal: data?.qtdTotal,
-          valorTotal: data?.valorTotal,
-          qtdMedia: data?.qtdMedia,
-          valorMedio: data?.valorMedio,
-          qtdMediaProjecao: data?.qtdMediaProjecao,
-          valorMedioProjecao: data?.valorMedioProjecao,
-          qtdMediaNecessaria: data?.qtdMediaNecessaria,
-          valorMedioNecessario: data?.valorMedioNecessario,
-        };
-
-        setAxisLinear(dates.map((i) => dayjs(i).format("YYYY-MM-DD")));
-        setDadosQuantidades([seriesQuantidades]); // Corrigido para ser um array de objetos
-        setDadosValores([seriesValores]); // Corrigido para ser um array de objetos
-        setDesempenhos([seriesDesempenhoEmpresas]);
+        setQtdChart(dataQuantidade);
+        setValorChart(dataTotal);
       })
       .catch(
         ({
           response: {
             data: { mensagem },
           },
-        }) => toast.error(mensagem)
+        }) => {
+          toast.error(mensagem);
+        }
       )
       .finally(() => {
         setIsLoad(false);
       });
   }, []);
 
-  return {
-    dadosQuantidades,
-    dadosValores,
-    axisLinear,
-    desempenhos,
-  };
+  useEffect(() => {
+    getTendencias();
+  }, [getTendencias]);
+
+  return { qtdChart, valorChart, data };
 };
