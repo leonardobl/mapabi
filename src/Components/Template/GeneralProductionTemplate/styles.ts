@@ -14,8 +14,8 @@ export const WrapperCard = styled.div`
 
 export const WrapperCards = styled.div`
   display: flex;
-  gap: 0 16px;
-  justify-content: space-between;
+  gap: 0 70px;
+  /* justify-content: space-between; */
   margin-bottom: 32px;
 `;
 
@@ -66,4 +66,8 @@ export const MiniCards = styled.div`
       color: #fff;
     }
   }
+`;
+
+export const WrapperButtonDown = styled.div`
+  margin-bottom: 32px;
 `;

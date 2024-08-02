@@ -6,6 +6,8 @@ import { useGeneralProduction } from "./useGeneralProduction";
 import { FormFilterGeneral } from "../../Molecules/Forms/FormFilterGeneral";
 import { maskMoney } from "../../../Util/masks";
 import { GraphColors } from "../../../Util/graphCorlors";
+import { Button } from "../../Atoms/Button";
+import { Table } from "../../Molecules/Table";
 
 export const GeneralProductionTemplate = () => {
   const { handleFilter, dataGeral, axisLinear, dataLinear } =
@@ -118,6 +120,51 @@ export const GeneralProductionTemplate = () => {
             </Card>
           </S.WrapperCard>
         </S.WrapperCards>
+
+        <S.WrapperButtonDown>
+          <Button data-variante-text>
+            <img
+              src="/assets/svg/icon-arrow-down-green.svg"
+              alt="icone download"
+            />
+            Exportar
+          </Button>
+        </S.WrapperButtonDown>
+
+        <Table.Root>
+          <Table.Header
+            columns=".8fr .5fr .5fr .5fr .5fr .5fr .5fr .2fr"
+            headers={[
+              "Loja",
+              "Qtd. Loja",
+              "%Loja",
+              "Qtd.Delivery",
+              "%Delivery",
+              "Delivery Veíc.leves",
+              "Delivery Veíc.Pesados",
+              "Total",
+            ]}
+          />
+
+          <Table.WrapperItems>
+            {dataGeral?.lojas?.map((l) => (
+              <Table.Item
+                key={`${Math.random()}`}
+                columns=".8fr .5fr .5fr .5fr .5fr .5fr .5fr .2fr"
+                values={[
+                  l.loja,
+                  l.qtdLoja + "",
+                  l.perLoja + "%",
+                  l.qtdMovel + "",
+                  l.perMovel + "%",
+                  l.movelNaoObrigatorio + "",
+                  l.movelObrigatorio + "",
+                  l.total + "",
+                ]}
+              />
+            ))}
+          </Table.WrapperItems>
+        </Table.Root>
       </S.Container>
     </Layout>
   );
