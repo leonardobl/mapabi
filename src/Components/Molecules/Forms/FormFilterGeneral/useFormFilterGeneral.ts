@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import dayjs from "dayjs";
-import { IGetGerenciamentoProps } from "../../../../Types/gerenciamento";
+import { IGetGerenciamentoProps } from "../../../../Types/relatorioGeral";
 
 const schema = z
   .object({

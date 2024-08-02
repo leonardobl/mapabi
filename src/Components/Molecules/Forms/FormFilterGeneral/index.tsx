@@ -4,7 +4,7 @@ import { Button } from "../../../Atoms/Button";
 import { useFormFilterGeneral } from "./useFormFilterGeneral";
 import { ComponentProps } from "react";
 import { ErrorMessage } from "../../../Atoms/ErrorMessage";
-import { IGetGerenciamentoProps } from "../../../../Types/gerenciamento";
+import { IGetGerenciamentoProps } from "../../../../Types/relatorioGeral";
 
 interface IFormFilterGeneralProps extends ComponentProps<"form"> {
   submitForm: (e: IGetGerenciamentoProps) => void;

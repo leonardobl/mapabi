@@ -3,7 +3,7 @@ import { Gerenciamento } from "../../../Services/Gerenciamento";
 import {
   IGerenciamentoDTO,
   IGetGerenciamentoProps,
-} from "../../../Types/gerenciamento";
+} from "../../../Types/relatorioGeral";
 import { useContextSite } from "../../../Context/Context";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
@@ -52,7 +52,7 @@ export const useGeneralProduction = () => {
 
   function getProducao(date: IGetGerenciamentoProps) {
     setIsLoad(true);
-    Gerenciamento.get(date)
+    Gerenciamento.geral(date)
       .then(({ data }) => {
         setDataGeral(data);
         formatLineChartData(data);
