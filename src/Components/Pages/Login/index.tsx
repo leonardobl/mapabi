@@ -1,4 +1,4 @@
-import { LoginTemplate } from "../../Template/LoginTemplate";
+import { LoginTemplate } from "../../Templates/LoginTemplate";
 
 export const Login = () => {
   return <LoginTemplate />;

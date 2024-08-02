@@ -12,7 +12,7 @@ export const TrendReportTemplate = () => {
       <S.Container>
         <S.WrapperCards>
           <S.WrapperCard>
-            <h3>Vistorias (%)</h3>
+            <h3>Quantidade Total de Vistorias</h3>
 
             <Card>
               <LineChart
@@ -20,7 +20,7 @@ export const TrendReportTemplate = () => {
                   bottom: 70,
                 }}
                 height={230}
-                width={500}
+                width={530}
                 xAxis={[{ scaleType: "band", data: axisLinear || [] }]}
                 series={dadosQuantidades || []}
                 slotProps={{
@@ -33,7 +33,7 @@ export const TrendReportTemplate = () => {
           </S.WrapperCard>
 
           <S.WrapperCard>
-            <h3>Produção Total de Vistorias</h3>
+            <h3>Valor Total de Vistorias</h3>
 
             <Card>
               <LineChart
@@ -41,7 +41,7 @@ export const TrendReportTemplate = () => {
                   bottom: 70,
                 }}
                 height={230}
-                width={500}
+                width={530}
                 xAxis={[{ scaleType: "band", data: axisLinear || [] }]}
                 series={dadosQuantidades || []}
                 slotProps={{
@@ -51,6 +51,40 @@ export const TrendReportTemplate = () => {
                 }}
               />
             </Card>
+          </S.WrapperCard>
+
+          <S.WrapperCard>
+            <h3>Desempenho em Relação a Meta</h3>
+
+            <S.Table>
+              <S.TableHeader>
+                <tr>
+                  <th>Meta</th>
+                  <th>Realizado</th>
+                  <th>Média/dia</th>
+                  <th>Necessidade /dia</th>
+                  <th>Projeção</th>
+                </tr>
+              </S.TableHeader>
+
+              <S.TableBody>
+                <tr>
+                  <td>0000</td>
+                  <td>0000</td>
+                  <td>0000</td>
+                  <td>0000</td>
+                  <td>0000</td>
+                </tr>
+
+                <tr>
+                  <td>0000</td>
+                  <td>0000</td>
+                  <td>0000</td>
+                  <td>0000</td>
+                  <td>0000</td>
+                </tr>
+              </S.TableBody>
+            </S.Table>
           </S.WrapperCard>
         </S.WrapperCards>
       </S.Container>
