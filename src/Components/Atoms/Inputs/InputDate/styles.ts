@@ -87,7 +87,7 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
       input {
         width: 100%;
 
-        height: 42px;
+        height: 44px;
         border-radius: 10px;
         border: 1px solid ${(props) => props.theme.colors["gray-100"]};
         background: #fff;
