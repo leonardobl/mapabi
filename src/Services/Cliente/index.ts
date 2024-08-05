@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 
-import { MapaApi } from "../../Api/mapa";
+import { MapaApi } from "../../Api/Mapa";
 import { removeEmpty } from "../../Util/removeEmpty";
 import {
   IClienteDTO,

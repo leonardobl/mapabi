@@ -16,9 +16,7 @@ export const Layout = ({ children, headerTitle, ...rest }: ILayoutProps) => {
       <S.MenuBar>
         <S.MenuBarImg>
           <img
-            src={`/assets/svg/logo-${
-              import.meta.env.VITE_APP_PROJECT
-            }-layout.svg`}
+            src={`/assets/svg/logo-${import.meta.env.VITE_APP_PROJECT.toLowerCase()}-layout.svg`}
             alt="logo empresa"
           />
         </S.MenuBarImg>
@@ -36,16 +34,13 @@ export const Layout = ({ children, headerTitle, ...rest }: ILayoutProps) => {
             Tendência
           </NavLink>
 
-          <NavLink
-            to={"/producao-vistoriador"}
-            title="Produção por Vistoriador"
-          >
+          <a href="#" title="Produção por Vistoriador">
             <img
               src="/assets/svg/icon-producao-vistoriador.svg"
               alt="icone producao geral"
             />
             Prod. por Vistoriador
-          </NavLink>
+          </a>
         </S.MenuItens>
       </S.MenuBar>
       <S.Main>

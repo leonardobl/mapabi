@@ -52,19 +52,20 @@ export const MenuItens = styled.div`
   }
 `;
 
-export const Main = styled.main``;
+export const Main = styled.main`
+  flex: 1;
+`;
 
 export const MainHeader = styled.header`
   height: 80px;
-  width: calc(100vw - 176px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
 `;
 
 export const WrapperHeaderContent = styled.div`
-  width: 100%;
   padding: 0 32px;
+  width: 100%;
   max-width: ${(props) => props.theme.screens["2xl"]};
   display: flex;
   justify-content: space-between;
@@ -113,4 +114,6 @@ export const WrapperHeaderImg = styled.div`
 
 export const MainContent = styled.div`
   padding: 32px;
+  width: 100%;
+  max-width: ${(props) => props.theme.screens["2xl"]};
 `;

@@ -3,13 +3,13 @@ import styled, { css } from "styled-components";
 export const Container = styled.div<{ $showIcon?: boolean }>`
   ${({ $showIcon }) => css`
     position: relative;
-
+    /* 
     &:has(input:focus),
     &:has(input:not(:placeholder-shown)) {
       label {
         top: -2px;
       }
-    }
+    } */
 
     &[data-error="true"] {
       .react-datepicker__input-container input {
@@ -18,6 +18,11 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
 
       label {
         color: red;
+      }
+
+      svg {
+        filter: brightness(0) saturate(100%) invert(16%) sepia(71%)
+          saturate(7434%) hue-rotate(10deg) brightness(98%) contrast(128%);
       }
     }
 
@@ -55,7 +60,7 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
       transform: translateY(-50%);
       content: "";
       display: block;
-      border-left: 1px solid rgb(204, 204, 204);
+      /* border-left: 1px solid rgb(204, 204, 204); */
       display: block;
       height: 50%;
     }
@@ -82,8 +87,8 @@ export const Container = styled.div<{ $showIcon?: boolean }>`
       input {
         width: 100%;
 
-        height: 36px;
-        border-radius: 12px;
+        height: 44px;
+        border-radius: 10px;
         border: 1px solid ${(props) => props.theme.colors["gray-100"]};
         background: #fff;
 
@@ -125,9 +130,9 @@ export const Required = styled.span<{ $isRequired: boolean }>`
 export const Label = styled.label`
   position: absolute;
   z-index: 1;
-  top: 50%;
-  left: 12px;
-  transform: translateY(-50%);
+  top: -9px;
+  left: 20px;
+  /* transform: translateY(-50%); */
   background: linear-gradient(to top, #fff 50%, transparent 50%);
   display: flex;
   pointer-events: none;

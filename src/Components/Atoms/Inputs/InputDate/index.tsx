@@ -20,7 +20,6 @@ export const InputDate = (props: InputDateProps) => {
       <DatePicker
         {...props}
         required={false}
-        placeholderText={""}
         // selected={value ? value : props.selected}
         onChange={(e, v) => {
           props.onChange(e, v);
@@ -72,37 +71,40 @@ export const InputDate = (props: InputDateProps) => {
         icon={
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="15"
-            height="16"
-            viewBox="0 0 15 16"
+            width="20"
+            height="22"
+            viewBox="0 0 20 22"
             fill="none"
           >
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"
-              d="M2.22224 3.11032C1.81314 3.11032 1.48149 3.42528 1.48149 3.8138V13.6625C1.48149 14.051 1.81314 14.366 2.22224 14.366H12.5927C13.0018 14.366 13.3334 14.051 13.3334 13.6625V3.8138C13.3334 3.42528 13.0018 3.11032 12.5927 3.11032H2.22224ZM0 3.8138C0 2.64824 0.994931 1.70337 2.22224 1.70337H12.5927C13.82 1.70337 14.8149 2.64824 14.8149 3.8138V13.6625C14.8149 14.828 13.82 15.7729 12.5927 15.7729H2.22224C0.994931 15.7729 0 14.828 0 13.6625V3.8138Z"
-              fill="#0B4A89"
+              d="M18 2H17V0H15V2H5V0H3V2H2C0.9 2 0 2.9 0 4V20C0 21.1 0.9 22 2 22H18C19.1 22 20 21.1 20 20V4C20 2.9 19.1 2 18 2ZM18 20H2V9H18V20ZM2 7H18V4H2V7Z"
+              fill="#9D9D9D"
+            />
+            <path d="M15.9353 10H13.8326V12.1027H15.9353V10Z" fill="#9D9D9D" />
+            <path d="M12.991 10H10.8883V12.1027H12.991V10Z" fill="#9D9D9D" />
+            <path d="M10.047 10H7.94434V12.1027H10.047V10Z" fill="#9D9D9D" />
+            <path d="M7.10268 10H5V12.1027H7.10268V10Z" fill="#9D9D9D" />
+            <path
+              d="M10.047 12.9448H7.94434V15.0475H10.047V12.9448Z"
+              fill="#9D9D9D"
             />
             <path
-              d="M10.3706 1V3.81391"
-              stroke="#0B4A89"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              d="M15.9353 12.9448H13.8326V15.0475H15.9353V12.9448Z"
+              fill="#9D9D9D"
             />
             <path
-              d="M4.44448 1V3.81391"
-              stroke="#0B4A89"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              d="M15.9353 15.8878H13.8326V17.9905H15.9353V15.8878Z"
+              fill="#9D9D9D"
             />
             <path
-              d="M1 6.69824H13"
-              stroke="#0B4A89"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              d="M12.991 12.9448H10.8883V15.0475H12.991V12.9448Z"
+              fill="#9D9D9D"
+            />
+            <path
+              d="M12.991 15.8878H10.8883V17.9905H12.991V15.8878Z"
+              fill="#9D9D9D"
             />
           </svg>
         }

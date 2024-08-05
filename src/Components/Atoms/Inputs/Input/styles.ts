@@ -36,7 +36,7 @@ export const Container = styled.div`
 `;
 
 export const MyInput = styled.input`
-  height: 36px;
+  height: 44px;
   border-radius: 10px;
   outline: none;
   /* letter-spacing: 1px; */
@@ -56,7 +56,6 @@ export const MyInput = styled.input`
   } */
 
   width: 100%;
-  height: 36px;
   border-radius: 12px;
   border: 0.5px solid ${(props) => props.theme.colors["gray-100"]};
   background: #fff;

@@ -28,7 +28,7 @@ MapaApi.interceptors.request.use((config) => {
 MapaApi.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.status === 403) {
+    if (error.response.status === 401) {
       toast.error("Token expirado");
       setTimeout(() => {
         localStorage.clear();

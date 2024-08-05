@@ -1,4 +1,4 @@
-import { GeneralProductionTemplate } from "../../Template/GeneralProductionTemplate";
+import { GeneralProductionTemplate } from "../../Templates/GeneralProductionTemplate";
 
 export const GeneralProduction = () => {
   return <GeneralProductionTemplate />;

@@ -47,7 +47,7 @@ export const FormLogin = ({ submitForm, ...rest }: IFormLogin) => {
         </div>
       </S.WrapperInputs>
 
-      <Button>Entrar</Button>
+      <Button data-variante-dark>Entrar</Button>
 
       <Link to={"#"}>Esqueceu sua senha?</Link>
     </S.Form>
