@@ -4,6 +4,18 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: relative;
 
+  & div.react-select__control {
+    cursor: pointer;
+    border-radius: 10px;
+    height: 44px;
+    /* width: 100%; */
+  }
+
+  & div.react-select__control--is-focused {
+    border: 1px solid #9d9d9d;
+    box-shadow: none;
+  }
+
   & div.react-select__indicator {
     margin-right: 3px;
   }
