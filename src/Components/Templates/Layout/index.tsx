@@ -34,13 +34,16 @@ export const Layout = ({ children, headerTitle, ...rest }: ILayoutProps) => {
             Tendência
           </NavLink>
 
-          <a href="#" title="Produção por Vistoriador">
+          <NavLink
+            to={"/producao-vistoriador"}
+            title="Produção por Vistoriador"
+          >
             <img
               src="/assets/svg/icon-producao-vistoriador.svg"
               alt="icone producao geral"
             />
             Prod. por Vistoriador
-          </a>
+          </NavLink>
         </S.MenuItens>
       </S.MenuBar>
       <S.Main>

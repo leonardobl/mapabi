@@ -10,7 +10,5 @@ declare module "react-select/dist/declarations/src/Select" {
     isMulti: IsMulti;
     group?: Group;
     label?: string;
-    variant?: "search" | "modal";
-    customError?: boolean;
   }
 }
