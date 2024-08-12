@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const MenuBar = styled.div`
-  width: 176px;
+  width: 212px;
   min-height: 100dvh;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
 `;

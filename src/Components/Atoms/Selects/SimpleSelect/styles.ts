@@ -20,11 +20,11 @@ export const Container = styled.div`
     margin-right: 3px;
   }
 
-  &:has(input:focus) {
+  /* &:has(input:focus) {
     label {
       top: -2px;
     }
-  }
+  } */
 
   & div.react-select__control--is-disabled {
     background-color: ${darken(0.04, "#fff")};
@@ -66,9 +66,9 @@ export const Label = styled.label`
   position: absolute;
   transition: all 0.2s ease-in-out;
   z-index: 1;
-  top: 50%;
+  top: -8px;
   left: 12px;
-  transform: translateY(-50%);
+
   background: linear-gradient(to top, #fff 50%, transparent 50%);
   display: flex;
   padding: 0 4px;

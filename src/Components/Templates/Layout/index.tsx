@@ -23,7 +23,7 @@ export const Layout = ({ children, headerTitle, ...rest }: ILayoutProps) => {
         <S.MenuItens>
           <NavLink to={"/producao-geral"} title="Produção Geral">
             <img
-              src="/assets/svg/icon-producao-geral.svg"
+              src="/assets/svg/icon-prod-geral.svg"
               alt="icone producao geral"
             />
             Produção Geral
@@ -39,10 +39,21 @@ export const Layout = ({ children, headerTitle, ...rest }: ILayoutProps) => {
             title="Produção por Vistoriador"
           >
             <img
-              src="/assets/svg/icon-producao-vistoriador.svg"
+              src="/assets/svg/icon-prod-vistoriador.svg"
               alt="icone producao geral"
             />
             Prod. por Vistoriador
+          </NavLink>
+
+          <NavLink
+            to={"/producao-tipo-servico"}
+            title="Produção por Vistoriador"
+          >
+            <img
+              src="/assets/svg/icon-prod-tipo-servico.svg"
+              alt="icone producao geral"
+            />
+            Prod. por Tipo de Serviço
           </NavLink>
         </S.MenuItens>
       </S.MenuBar>

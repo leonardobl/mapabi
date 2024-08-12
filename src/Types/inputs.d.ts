@@ -1,9 +1,9 @@
 import { ComponentProps } from "react";
 
-export interface ISelectOptions {
-  value: any;
+export interface ISelectOptions<T> {
+  value: string;
   label: string;
-  element?: any;
+  element?: T;
 }
 
 interface InputCustomProps extends ComponentProps<"input"> {
