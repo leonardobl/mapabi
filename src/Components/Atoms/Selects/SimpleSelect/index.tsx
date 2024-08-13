@@ -32,6 +32,7 @@ export const SimpleSelect = function ReactSelect<
           style={{
             cursor: "pointer",
             position: "relative",
+            right: "-18px",
           }}
         />
       </components.ClearIndicator>

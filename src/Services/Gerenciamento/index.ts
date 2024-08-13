@@ -41,12 +41,14 @@ export class Gerenciamento {
   static async TipoServico(
     props?: ITipoServicoListProps
   ): Promise<AxiosResponse<IProducaoTipoServicoDTO[]>> {
-    if (props) {
-      const values = removeEmpty(props);
-      const params = new URLSearchParams(values);
-      return MapaApi.get(`${basePath}/producao-tipo-servico?${params}`);
-    }
+    const data = { empresa: import.meta.env.VITE_APP_PROJECT, ...props };
+    const values = removeEmpty(data);
+    const params = new URLSearchParams(values);
+    return MapaApi.get(`${basePath}/producao-tipo-servico?${params}`);
+  }
 
-    return MapaApi.get(`${basePath}/producao-tipo-servico`);
+  static async listarLojas(): Promise<AxiosResponse<string[]>> {
+    const empresa = import.meta.env.VITE_APP_PROJECT;
+    return MapaApi.get(`${basePath}/listar-lojas?empresa=${empresa}`);
   }
 }

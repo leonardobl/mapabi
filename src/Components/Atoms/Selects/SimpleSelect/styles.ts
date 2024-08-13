@@ -17,7 +17,7 @@ export const Container = styled.div`
   }
 
   & div.react-select__indicator {
-    margin-right: 3px;
+    /* margin-right: 3px; */
   }
 
   /* &:has(input:focus) {
@@ -43,11 +43,11 @@ export const Container = styled.div`
     }
   }
 
-  &:has(.react-select__single-value) {
+  /* &:has(.react-select__single-value) {
     label {
       top: -2px;
     }
-  }
+  } */
 
   &:has(.react-select__multi-value) {
     label {

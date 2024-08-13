@@ -7,7 +7,7 @@ import { useServiceTypeReport } from "./useServiceTypeReport";
 import { GraphColors } from "../../../Util/graphCorlors";
 
 export const ServiceTypeReportTemplate = () => {
-  const { handleSubmite } = useServiceTypeReport();
+  const { formattedData, handleSubmite, tipoServicos } = useServiceTypeReport();
 
   return (
     <Layout headerTitle="Produtividade por Tipo de Serviço">
@@ -33,64 +33,21 @@ export const ServiceTypeReportTemplate = () => {
             </tr>
           </S.TableHead>
           <S.TableBody>
-            <tr>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>400</td>
-              <td>800</td>
-              <td>400</td>
-              <td>600</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>400</td>
-              <td>800</td>
-              <td>400</td>
-              <td>600</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>400</td>
-              <td>800</td>
-              <td>400</td>
-              <td>600</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>400</td>
-              <td>800</td>
-              <td>400</td>
-              <td>600</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>400</td>
-              <td>800</td>
-              <td>400</td>
-              <td>600</td>
-              <td>1000</td>
-            </tr>
-            <tr>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>400</td>
-              <td>800</td>
-              <td>400</td>
-              <td>600</td>
-              <td>1000</td>
-            </tr>
+            {tipoServicos.map((i) => (
+              <tr key={Math.random()}>
+                <td>{i?.loja}</td>
+                <td>{i?.qtdTransferenciaLoja}</td>
+                <td>{i?.qtdTransferenciaMovel}</td>
+                <td>{i?.qtdTransferenciaTotal}</td>
+                <td>{i?.qtdPrimeiroEmplacamentoLoja}</td>
+                <td>{i.qtdPrimeiroEmplacamentoMovel}</td>
+                <td>{i?.qtdPrimeiroEmplacamentoTotal}</td>
+              </tr>
+            ))}
           </S.TableBody>
         </S.Table>
 
-        <h3>Vistorias de Transfeência x Primeiro Emplacamento </h3>
+        <h3>Vistorias de Transferência x Primeiro Emplacamento </h3>
 
         <S.WrapperCards>
           <Card>
@@ -102,16 +59,25 @@ export const ServiceTypeReportTemplate = () => {
               width={600}
               slotProps={{
                 legend: {
-                  hidden: true,
+                  position: {
+                    vertical: "bottom",
+                    horizontal: "right",
+                  },
+
+                  labelStyle: { fontSize: 12 },
+                  itemMarkWidth: 10,
+                  itemMarkHeight: 10,
+                  markGap: 5,
+                  itemGap: 10,
                 },
               }}
               xAxis={[
                 {
                   scaleType: "band",
-                  data: ["Lojas", "Deliverys"],
+                  data: formattedData?.lojas || [],
                   colorMap: {
                     type: "ordinal",
-                    values: ["Lojas", "Deliverys"],
+                    values: ["Lojas"],
                     colors: [
                       "#2d2d2d",
                       GraphColors[import.meta.env.VITE_APP_PROJECT],
@@ -119,7 +85,7 @@ export const ServiceTypeReportTemplate = () => {
                   },
                 },
               ]}
-              series={[]}
+              series={formattedData.series || []}
               skipAnimation={true}
             />
           </Card>
