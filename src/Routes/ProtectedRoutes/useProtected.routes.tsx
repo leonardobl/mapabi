@@ -3,6 +3,7 @@ import { ProtectedRoute } from "../../Components/Atoms/ProtectedRoute";
 import { GeneralProduction } from "../../Components/Pages/GeneralProduction";
 import { TrendReport } from "../../Components/Pages/TrendReport";
 import { InspectorProductivity } from "../../Components/Pages/InspectorProductivity";
+import { ServiceTypeReport } from "../../Components/Pages/ServiceTypeReport";
 
 export const UseProtectedRoutes = () => {
   return (
@@ -23,12 +24,19 @@ export const UseProtectedRoutes = () => {
           </ProtectedRoute>
         }
       />
-
       <Route
         path="/producao-vistoriador"
         element={
           <ProtectedRoute>
             <InspectorProductivity />
+          </ProtectedRoute>
+        }
+      />{" "}
+      <Route
+        path="/producao-tipo-servico"
+        element={
+          <ProtectedRoute>
+            <ServiceTypeReport />
           </ProtectedRoute>
         }
       />
