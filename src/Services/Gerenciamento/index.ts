@@ -9,6 +9,10 @@ import {
   ITendenciaDTO,
   ITendenciaGetProps,
 } from "../../Types/relatorioTendencia";
+import {
+  IProducaoTipoServicoDTO,
+  ITipoServicoListProps,
+} from "../../Types/tipoServico";
 
 const basePath = "/gerenciamento";
 const empresa = import.meta.env.VITE_APP_PROJECT;
@@ -32,5 +36,17 @@ export class Gerenciamento {
     }
 
     return MapaApi.get(`${basePath}/tendencia?empresa=${empresa}`);
+  }
+
+  static async TipoServico(
+    props?: ITipoServicoListProps
+  ): Promise<AxiosResponse<IProducaoTipoServicoDTO[]>> {
+    if (props) {
+      const values = removeEmpty(props);
+      const params = new URLSearchParams(values);
+      return MapaApi.get(`${basePath}/producao-tipo-servico?${params}`);
+    }
+
+    return MapaApi.get(`${basePath}/producao-tipo-servico`);
   }
 }
