@@ -33,4 +33,9 @@ export class Gerenciamento {
 
     return MapaApi.get(`${basePath}/tendencia?empresa=${empresa}`);
   }
+
+  static async listarLojas(): Promise<AxiosResponse<string[]>> {
+    const empresa = import.meta.env.VITE_APP_PROJECT;
+    return MapaApi.get(`${basePath}/listar-lojas?empresa=${empresa}`);
+  }
 }
