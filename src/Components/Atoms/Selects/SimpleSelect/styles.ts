@@ -3,11 +3,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
+  font-size: 14px;
 
   & div.react-select__control {
     cursor: pointer;
     border-radius: 10px;
     height: 44px;
+
     /* width: 100%; */
   }
 

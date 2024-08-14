@@ -7,7 +7,7 @@ export const FormFilter = styled.form`
   max-width: 260px;
   display: grid;
   gap: 0 16px;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 180px 180px 220px 1fr;
   margin-bottom: 32px;
 `;
 
@@ -24,7 +24,7 @@ export const Table = styled.table`
   }
 
   td {
-    padding: 16px;
+    padding: 10px 16px;
   }
 `;
 
@@ -58,10 +58,9 @@ export const TableHead = styled.thead`
 export const TableBody = styled.tbody`
   td {
     color: #a3a3a3;
-    text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
-    line-height: 14px;
+    line-height: 24px;
   }
 `;

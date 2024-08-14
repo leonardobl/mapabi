@@ -5,22 +5,65 @@ import { SimpleSelect } from "../../Atoms/Selects/SimpleSelect";
 import { Layout } from "../Layout";
 import * as S from "./styles";
 import { useInspectorProductivity } from "./useInspectorProductivity";
+import { InputDate } from "../../Atoms/Inputs/InputDate";
+import dayjs from "dayjs";
 
 export const InspectorProductivityTemplates = () => {
-  const { Controller, control, stores } = useInspectorProductivity();
+  const {
+    Controller,
+    control,
+    stores,
+    handleSubmit,
+    onSubmite,
+    produtividades,
+  } = useInspectorProductivity();
   return (
     <Layout headerTitle="Produtividade por Vistoriador">
       <S.Container>
-        <S.FormFilter>
+        <S.FormFilter onSubmit={handleSubmit(onSubmite)}>
+          <div>
+            <Controller
+              control={control}
+              name="dataInicio"
+              render={({ field: { onChange, value } }) => (
+                <InputDate
+                  label="Data Inicial"
+                  selected={dayjs(value).toDate()}
+                  placeholderText="___/___/___"
+                  onChange={(e) =>
+                    e ? onChange(dayjs(e).format("YYYY-MM-DD")) : onChange("")
+                  }
+                />
+              )}
+            />
+          </div>
+          <div>
+            <Controller
+              control={control}
+              name="dataFim"
+              render={({ field: { onChange, value } }) => (
+                <InputDate
+                  label="Data Final"
+                  placeholderText="___/___/___"
+                  selected={dayjs(value).toDate()}
+                  onChange={(e) =>
+                    e ? onChange(dayjs(e).format("YYYY-MM-DD")) : onChange("")
+                  }
+                />
+              )}
+            />
+          </div>
           <div>
             <Controller
               control={control}
               name="loja"
-              render={({ field: { onChange } }) => (
+              render={({ field: { onChange, value } }) => (
                 <SimpleSelect
+                  isClearable
                   options={stores}
                   label="Loja"
-                  onChange={(e: SingleValue<ISelectOptions<unknown>>) =>
+                  value={stores.find((i) => i.value === value) || null}
+                  onChange={(e: SingleValue<ISelectOptions<string>>) =>
                     onChange(e?.value)
                   }
                 />
@@ -61,66 +104,21 @@ export const InspectorProductivityTemplates = () => {
             </tr>
           </S.TableHead>
           <S.TableBody>
-            <tr>
-              <td>Leonardo</td>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>00:00:44</td>
-              <td>800</td>
-              <td>00:00:44</td>
-              <td>952</td>
-              <td>00:00:80</td>
-              <td>760</td>
-              <td>00:00:60</td>
-            </tr>
-            <tr>
-              <td>Leonardo</td>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>00:00:44</td>
-              <td>800</td>
-              <td>00:00:44</td>
-              <td>952</td>
-              <td>00:00:80</td>
-              <td>760</td>
-              <td>00:00:60</td>
-            </tr>
-            <tr>
-              <td>Leonardo</td>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>00:00:44</td>
-              <td>800</td>
-              <td>00:00:44</td>
-              <td>952</td>
-              <td>00:00:80</td>
-              <td>760</td>
-              <td>00:00:60</td>
-            </tr>
-            <tr>
-              <td>Leonardo</td>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>00:00:44</td>
-              <td>800</td>
-              <td>00:00:44</td>
-              <td>952</td>
-              <td>00:00:80</td>
-              <td>760</td>
-              <td>00:00:60</td>
-            </tr>
-            <tr>
-              <td>Leonardo</td>
-              <td>São Luís</td>
-              <td>400</td>
-              <td>00:00:44</td>
-              <td>800</td>
-              <td>00:00:44</td>
-              <td>952</td>
-              <td>00:00:80</td>
-              <td>760</td>
-              <td>00:00:60</td>
-            </tr>
+            {produtividades?.length > 0 &&
+              produtividades?.map((i) => (
+                <tr key={Math.random()}>
+                  <td>{i?.nome}</td>
+                  <td>{i?.loja}</td>
+                  <td>{i?.qtdAgendamentoTransferencia}</td>
+                  <td>{i?.tempoAgendamentoTransferencia}</td>
+                  <td>{i?.qtdAgendamentoEmplacamento}</td>
+                  <td>{i?.tempoAgendamentoEmplacamento}</td>
+                  <td>{i?.qtdAgendamentoTransferenciaDelivery}</td>
+                  <td>{i?.tempoAgendamentoTransferenciaDelivery}</td>
+                  <td>{i?.qtdAgendamentoEmplacamentoDelivery}</td>
+                  <td>{i?.tempoAgendamentoEmplacamentoDelivery}</td>
+                </tr>
+              ))}
           </S.TableBody>
         </S.Table>
       </S.Container>

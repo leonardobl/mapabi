@@ -9,6 +9,10 @@ import {
   ITendenciaDTO,
   ITendenciaGetProps,
 } from "../../Types/relatorioTendencia";
+import {
+  IProdutividadeDTO,
+  IProdutividadeListProps,
+} from "../../Types/produtividade";
 
 const basePath = "/gerenciamento";
 const empresa = import.meta.env.VITE_APP_PROJECT;
@@ -37,5 +41,14 @@ export class Gerenciamento {
   static async listarLojas(): Promise<AxiosResponse<string[]>> {
     const empresa = import.meta.env.VITE_APP_PROJECT;
     return MapaApi.get(`${basePath}/listar-lojas?empresa=${empresa}`);
+  }
+
+  static async produtividade(
+    props: IProdutividadeListProps
+  ): Promise<AxiosResponse<IProdutividadeDTO[]>> {
+    const empresa = import.meta.env.VITE_APP_PROJECT;
+    const values = removeEmpty({ ...props, empresa });
+    const params = new URLSearchParams(values).toString();
+    return MapaApi.get(`${basePath}/produtividade?${params}`);
   }
 }
