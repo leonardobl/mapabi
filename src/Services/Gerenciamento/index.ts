@@ -14,6 +14,11 @@ import {
   IProdutividadeListProps,
 } from "../../Types/produtividade";
 
+import {
+  IProducaoTipoServicoDTO,
+  ITipoServicoListProps,
+} from "../../Types/tipoServico";
+
 const basePath = "/gerenciamento";
 const empresa = import.meta.env.VITE_APP_PROJECT;
 
@@ -50,5 +55,14 @@ export class Gerenciamento {
     const values = removeEmpty({ ...props, empresa });
     const params = new URLSearchParams(values).toString();
     return MapaApi.get(`${basePath}/produtividade?${params}`);
+  }
+
+  static async TipoServico(
+    props?: ITipoServicoListProps
+  ): Promise<AxiosResponse<IProducaoTipoServicoDTO[]>> {
+    const data = { empresa: import.meta.env.VITE_APP_PROJECT, ...props };
+    const values = removeEmpty(data);
+    const params = new URLSearchParams(values);
+    return MapaApi.get(`${basePath}/producao-tipo-servico?${params}`);
   }
 }
