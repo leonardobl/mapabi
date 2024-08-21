@@ -76,8 +76,8 @@ export const TrendReportTemplate = () => {
                 <tr>
                   <td>{data?.meta}</td>
                   <td>{data?.qtdTotal}</td>
-                  <td>{data?.valorMedio}</td>
-                  <td>{data?.qtdMediaNecessaria}</td>
+                  <td>{data?.qtdMedia}</td>
+                  <td>{data?.qtdMediaProjecao}</td>
                   <td>{data?.valorMedioProjecao}</td>
                 </tr>
               </S.TableBody>

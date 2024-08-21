@@ -23,7 +23,7 @@ export const GeneralProductionTemplate = () => {
         <S.WrapperMiniCards>
           <S.MiniCards>
             <p>Ticket Médio</p>
-            <span>{maskMoney(dataGeral?.ticketMedio)}</span>
+            <span>{dataGeral?.ticketMedio ? maskMoney(dataGeral?.ticketMedio/100) : "-"}</span>
           </S.MiniCards>
           <S.MiniCards>
             <p>Revistorias</p>
