@@ -44,9 +44,10 @@ export const useTrendReport = () => {
           ),
           series: [
             {
-              data: data[0].tendencias.map((i) => i.valorTotal),
+              data: data[0].tendencias.map((i) => i.valorTotal/100),
               label: data[0].empresa,
               color: GraphColors[data[0].empresa],
+              valueFormatter: (value: number) => `R$ ${value}`,
             },
           ],
         };
