@@ -92,6 +92,7 @@ export const GeneralProductionTemplate = () => {
                 series={
                   dataGeral?.empresas?.map((item) => ({
                     data: [item.qtdLoja, item.qtdDelivery],
+                    valueFormatter: (value) => `${value} %`,
                   })) || []
                 }
                 skipAnimation={true}
