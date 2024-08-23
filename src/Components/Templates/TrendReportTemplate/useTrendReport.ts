@@ -6,6 +6,7 @@ import { useContextSite } from "../../../Context/Context";
 import { ILineChartprops } from "../../../Types/lineChart";
 import { GraphColors } from "../../../Util/graphCorlors";
 import { ITendenciaDTO } from "../../../Types/relatorioTendencia";
+import { maskMoney } from "../../../Util/masks";
 
 export const useTrendReport = () => {
   const { setIsLoad } = useContextSite();
@@ -47,7 +48,7 @@ export const useTrendReport = () => {
               data: data[0].tendencias.map((i) => i.valorTotal/100),
               label: data[0].empresa,
               color: GraphColors[data[0].empresa],
-              valueFormatter: (value: number) => `R$ ${value}`,
+              valueFormatter: (value: number) => `${maskMoney(value)}`,
             },
           ],
         };
